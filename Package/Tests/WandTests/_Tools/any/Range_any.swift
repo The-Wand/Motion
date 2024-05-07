@@ -15,17 +15,15 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
+/// Created by Alex Kozin
+/// 2020 El Machine
 
-import SwiftUI
+import Foundation
 
-@available(macOS 11.0, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
+public extension ClosedRange where Bound: FixedWidthInteger {
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+    var any: Bound {
+        .random(in: self)
     }
 
 }

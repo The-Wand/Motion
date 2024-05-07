@@ -15,8 +15,6 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// 2020 El Machine
 
 import SwiftUI
 
@@ -24,7 +22,9 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
+
         Text("Hello, Wand |")
+
     }
 
 }

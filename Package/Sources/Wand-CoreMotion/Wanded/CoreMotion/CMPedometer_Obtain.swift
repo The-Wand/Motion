@@ -15,17 +15,25 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
+/// Created by Alex Kozin
+/// 2020 El Machine
 
-import SwiftUI
+#if canImport(CoreMotion)
+import CoreMotion.CMPedometer
+import Wand
 
-@available(macOS 11.0, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
+/// Obtain
+///
+/// let pedometer: CMPedometer = nil|
+///
+@available(visionOS, unavailable)
+extension CMPedometer: Obtain {
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+    @inline(__always)
+    public static func obtain(by wand: Wand?) -> Self {
+        Self()
     }
-
+     
 }
+
+#endif
