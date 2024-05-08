@@ -24,8 +24,26 @@ struct PlayApp: App {
 
     var body: some Scene {
         WindowGroup {
+
             ContentView()
+
         }
     }
 
+}
+
+@available(tvOS 13, watchOS 6, *)
+struct ContentView: View {
+
+    var body: some View {
+
+        Text("Hello, Wand |")
+
+    }
+
+}
+
+@available(tvOS 13, watchOS 6, *)
+#Preview {
+    ContentView()
 }

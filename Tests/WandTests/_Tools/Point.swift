@@ -20,7 +20,6 @@
 
 import Foundation
 
-import Wand_CoreMotion
 import Wand
 
 internal

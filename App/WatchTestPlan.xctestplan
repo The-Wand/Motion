@@ -22,9 +22,8 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:Wand-Tools.xcodeproj",
+        "containerPath" : "container:App.xcodeproj",
         "identifier" : "613966472BE0F87A004C18A3",
         "name" : "WatchPlayTests"
       }
