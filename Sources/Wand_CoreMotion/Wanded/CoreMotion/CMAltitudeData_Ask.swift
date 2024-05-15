@@ -18,41 +18,37 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-#if canImport(CoreMotion) && !targetEnvironment(simulator) && !os(macOS)
-import CoreMotion
-
-import Wand_CoreMotion
+#if canImport(CoreMotion)
+import CoreMotion.CMPedometer
 import Wand
-import XCTest
 
-class CoreMotion_Tests: XCTestCase {
+/// Ask
+///
+/// |{ (altitude: CMAltitudeData) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+extension CMAltitudeData: AskingNil, Wanded {
 
-    func test_CMPedometerEvent() {
-        let e = expectation()
-        e.assertForOverFulfill = false
+    @inline(__always)
+    public
+    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
-        |.one { (event: CMPedometerEvent) in
-            e.fulfill()
+        //Save ask
+        guard wand.answer(the: ask) else {
+            return
         }
 
-        waitForExpectations()
-    }
+        //Request for a first time
 
-    //Test it while walking
-    func test_CMPedometerData() {
-        let e = expectation()
-        e.assertForOverFulfill = false
-
-        |{ (location: CMPedometerData) in
-            e.fulfill()
+        //Make request
+        wand | .Optional.once(ask.once) { (motion: CMDeviceMotion) in
+            wand.add(motion.attitude)
         }
 
-        waitForExpectations()
     }
 
-    func test_CMPedometer() {
-        XCTAssertNotNil(CMPedometer.self|)
-    }
 }
 
 #endif

@@ -53,12 +53,8 @@ extension CMPedometerData: AskingNil, Wanded {
 
         //Make request
         source.startUpdates(from: date) { (data, error) in
-            if let error = error {
-                wand.add(error)
-                return
-            }
-
-            wand.add(data!)
+            wand.addIf(exist: data)
+            wand.addIf(exist: error)
         }
 
     }

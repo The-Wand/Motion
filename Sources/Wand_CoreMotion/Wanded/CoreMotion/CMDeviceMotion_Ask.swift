@@ -24,14 +24,12 @@ import Wand
 
 /// Ask
 ///
-/// |{ (event: CMPedometerEvent) in
+/// |{ (altitude: CMAltitudeData) in
 ///
 /// }
 ///
-@available(iOS 10.0, watchOS 3.0, *)
-@available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerEvent: AskingNil, Wanded {
+extension CMDeviceMotion: AskingNil, Wanded {
 
     @inline(__always)
     public
@@ -45,19 +43,24 @@ extension CMPedometerEvent: AskingNil, Wanded {
         //Request for a first time
 
         //Prepare context
-        let source: CMPedometer = wand.obtain()
+
+        let source: CMMotionManager = wand.obtain()
+        source.deviceMotionUpdateInterval   = wand.get() ?? 0.1
+
+        let frame: CMAttitudeReferenceFrame = wand.get() ?? CMAttitudeReferenceFrame()
+        let q: OperationQueue              = wand.get() ?? .current!
 
         //Set the cleaner
         wand.setCleaner(for: ask) {
-            source.stopEventUpdates()
+            source.stopDeviceMotionUpdates()
         }
 
         //Make request
-        source.startEventUpdates { (update, error) in
-            wand.addIf(exist: update)
+        source.startDeviceMotionUpdates(using: frame, to: q) { motion, error in
+            wand.addIf(exist: motion)
             wand.addIf(exist: error)
         }
-        
+
     }
 
 }

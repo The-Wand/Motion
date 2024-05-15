@@ -34,7 +34,7 @@ let package = Package(
             targets: ["Wand_CoreMotion"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/El-Machine/Wand.git", from: "0.1.9")
+        .package(url: "https://github.com/El-Machine/Wand.git", from: "1.1.1-rc.2")
     ],
     targets: [
         .target(
