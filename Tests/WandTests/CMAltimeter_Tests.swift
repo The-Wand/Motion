@@ -25,33 +25,32 @@ import Wand_CoreMotion
 import Wand
 import XCTest
 
-class CMMotionManager_Tests: XCTestCase {
+class CMAltimeter_Tests: XCTestCase {
 
-    func test_CMAltitudeData() {
-        let e = expectation()
-        e.assertForOverFulfill = false
+//    func test_<#T#>_once() {
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        |.one { (<#t#>: <#T#>) in
+//            e.fulfill()
+//        }
+//
+//        waitForExpectations()
+//    }
+//
+//    func test_<#T#>_while() {
+//        let e = expectation()
+//        e.assertForOverFulfill = false
+//
+//        |.while { (<#t#>: <#T#>) in
+//            e.fulfill()
+//        }
+//
+//        waitForExpectations()
+//    }
 
-        |.one { (altitude: CMAttitude) in
-            e.fulfill()
-        }
-
-        waitForExpectations()
-    }
-
-    //Test it while walking
-    func test_CMDeviceMotion() {
-        let e = expectation()
-        e.assertForOverFulfill = false
-
-        |{ (motion: CMDeviceMotion) in
-            e.fulfill()
-        }
-
-        waitForExpectations()
-    }
-
-    func test_CMMotionManager() {
-        XCTAssertNotNil(CMMotionManager.self|)
+    func test_CMAltimeter() {
+        XCTAssertNotNil(CMAltimeter.self|)
     }
 
 }

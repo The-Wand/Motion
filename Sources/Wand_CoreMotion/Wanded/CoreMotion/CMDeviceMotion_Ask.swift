@@ -24,16 +24,17 @@ import Wand
 
 /// Ask
 ///
-/// |{ (altitude: CMAltitudeData) in
+/// |{ (motion: CMDeviceMotion) in
 ///
 /// }
 ///
 @available(visionOS, unavailable)
 extension CMDeviceMotion: AskingNil, Wanded {
 
-    @inline(__always)
-    public
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    @inline(__always) 
+    public 
+    static 
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
         //Save ask
         guard wand.answer(the: ask) else {
@@ -43,23 +44,29 @@ extension CMDeviceMotion: AskingNil, Wanded {
         //Request for a first time
 
         //Prepare context
-
         let source: CMMotionManager = wand.obtain()
         source.deviceMotionUpdateInterval   = wand.get() ?? 0.1
 
-        let frame: CMAttitudeReferenceFrame = wand.get() ?? CMAttitudeReferenceFrame()
-        let q: OperationQueue              = wand.get() ?? .current!
+        let frame: CMAttitudeReferenceFrame? = wand.get()
+        let q: OperationQueue              = wand.get() ?? .init()
+
+        let handler: CMDeviceMotionHandler = { motion, error in
+            wand.addIf(exist: motion)
+            wand.addIf(exist: error)
+        }
 
         //Set the cleaner
         wand.setCleaner(for: ask) {
             source.stopDeviceMotionUpdates()
         }
 
-        //Make request
-        source.startDeviceMotionUpdates(using: frame, to: q) { motion, error in
-            wand.addIf(exist: motion)
-            wand.addIf(exist: error)
+        //Request
+        if let frame {
+            source.startDeviceMotionUpdates(using: frame, to: q, withHandler: handler)
+        } else {
+            source.startDeviceMotionUpdates(to: q, withHandler: handler)
         }
+
 
     }
 

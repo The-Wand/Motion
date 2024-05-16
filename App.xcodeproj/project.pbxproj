@@ -13,8 +13,8 @@
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		617EACD02BF511A000EE1559 /* CMMotionManager_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EACCE2BF511A000EE1559 /* CMMotionManager_Tests.swift */; };
 		617EACD12BF511A000EE1559 /* CMMotionManager_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EACCE2BF511A000EE1559 /* CMMotionManager_Tests.swift */; };
-		617EACD22BF511A000EE1559 /* CMPedometer_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EACCF2BF511A000EE1559 /* CMPedometer_Tests.swift */; };
-		617EACD32BF511A000EE1559 /* CMPedometer_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EACCF2BF511A000EE1559 /* CMPedometer_Tests.swift */; };
+		617EACD22BF511A000EE1559 /* CMAltimeter_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EACCF2BF511A000EE1559 /* CMAltimeter_Tests.swift */; };
+		617EACD32BF511A000EE1559 /* CMAltimeter_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EACCF2BF511A000EE1559 /* CMAltimeter_Tests.swift */; };
 		618F8EFD2BE9FF7B00618E7C /* Range_any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F8EAB2BE9FDCE00618E7C /* Range_any.swift */; };
 		618F8F002BE9FF7B00618E7C /* any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F8EA92BE9FDCE00618E7C /* any.swift */; };
 		618F8F012BE9FF7B00618E7C /* String_any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618F8EAC2BE9FDCE00618E7C /* String_any.swift */; };
@@ -55,7 +55,7 @@
 		6162624728BC8E2B00D63EA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6162624C28BC8E2B00D63EA5 /* Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		617EACCE2BF511A000EE1559 /* CMMotionManager_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMMotionManager_Tests.swift; sourceTree = "<group>"; };
-		617EACCF2BF511A000EE1559 /* CMPedometer_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMPedometer_Tests.swift; sourceTree = "<group>"; };
+		617EACCF2BF511A000EE1559 /* CMAltimeter_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMAltimeter_Tests.swift; sourceTree = "<group>"; };
 		618D53D12BE3C5120098DB6F /* WandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		618F8EA92BE9FDCE00618E7C /* any.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = any.swift; sourceTree = "<group>"; };
 		618F8EAA2BE9FDCE00618E7C /* CoreLocation_any.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreLocation_any.swift; sourceTree = "<group>"; };
@@ -68,6 +68,7 @@
 		61A37BB42BE24A5F007B7FEE /* PlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		61B464E72BEB76B70064B4C1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		61D640B82BF61F8F006BD3F8 /* CMPedometer_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMPedometer_Tests.swift; sourceTree = "<group>"; };
 		OBJ_141 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_142 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +152,8 @@
 			children = (
 				618F8EB02BE9FDCE00618E7C /* _Tools */,
 				617EACCE2BF511A000EE1559 /* CMMotionManager_Tests.swift */,
-				617EACCF2BF511A000EE1559 /* CMPedometer_Tests.swift */,
+				61D640B82BF61F8F006BD3F8 /* CMPedometer_Tests.swift */,
+				617EACCF2BF511A000EE1559 /* CMAltimeter_Tests.swift */,
 			);
 			path = WandTests;
 			sourceTree = "<group>";
@@ -368,7 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				618F8F2A2BEA04FA00618E7C /* any.swift in Sources */,
-				617EACD32BF511A000EE1559 /* CMPedometer_Tests.swift in Sources */,
+				617EACD32BF511A000EE1559 /* CMAltimeter_Tests.swift in Sources */,
 				618F8F2B2BEA04FA00618E7C /* Range_any.swift in Sources */,
 				617EACD12BF511A000EE1559 /* CMMotionManager_Tests.swift in Sources */,
 				618F8F2E2BEA04FD00618E7C /* Point.swift in Sources */,
@@ -391,7 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				618F8EFD2BE9FF7B00618E7C /* Range_any.swift in Sources */,
-				617EACD22BF511A000EE1559 /* CMPedometer_Tests.swift in Sources */,
+				617EACD22BF511A000EE1559 /* CMAltimeter_Tests.swift in Sources */,
 				618F8F002BE9FF7B00618E7C /* any.swift in Sources */,
 				617EACD02BF511A000EE1559 /* CMMotionManager_Tests.swift in Sources */,
 				618F8F012BE9FF7B00618E7C /* String_any.swift in Sources */,
@@ -435,7 +437,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_PREVIEWS = YES;
@@ -494,7 +496,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -546,7 +548,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -591,7 +593,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -650,7 +652,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -748,7 +750,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -821,7 +823,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -868,7 +870,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

@@ -15,46 +15,25 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
+/// Created by Alex Kozin
+/// 2020 El Machine
 
+#if canImport(CoreMotion)
+import CoreMotion.CMPedometer
 import Wand
-import Wand_CoreMotion
 
-import CoreMotion
+/// Obtain
+///
+/// let source: CMAltimeter = nil|
+///
+@available(visionOS, unavailable)
+extension CMAltimeter: Obtain {
 
-import SwiftUI
-
-@available(macOS 11.0, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
-
-    var body: some Scene {
-        WindowGroup {
-
-            ContentView()
-
-        }
+    @inline(__always)
+    public static func obtain(by wand: Wand?) -> Self {
+        Self()
     }
 
 }
 
-@available(tvOS 13, watchOS 6, *)
-struct ContentView: View {
-
-    var body: some View {
-
-        Text("Hello, Wand |").onAppear {
-
-//            |{ (a: CMAttitude) in
-//
-//            }
-
-        }
-
-    }
-
-}
-
-@available(tvOS 13, watchOS 6, *)
-#Preview {
-    ContentView()
-}
+#endif

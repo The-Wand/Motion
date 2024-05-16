@@ -19,7 +19,7 @@
 /// 2020 El Machine
 
 #if canImport(CoreMotion)
-import CoreMotion.CMPedometer
+import CoreMotion
 import Wand
 
 /// Ask
@@ -29,7 +29,7 @@ import Wand
 /// }
 ///
 @available(visionOS, unavailable)
-extension CMAltitudeData: AskingNil, Wanded {
+extension CMAttitude: AskingNil, Wanded {
 
     @inline(__always)
     public
