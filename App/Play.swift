@@ -20,10 +20,9 @@ import Wand
 import Wand_CoreMotion
 
 import CoreMotion
-
 import SwiftUI
 
-@available(macOS 11.0, tvOS 14, watchOS 7, *)
+@available(macOS 12, iOS 14, tvOS 12, watchOS 7, *)
 @main
 struct PlayApp: App {
 
@@ -37,24 +36,18 @@ struct PlayApp: App {
 
 }
 
-@available(tvOS 13, watchOS 6, *)
+@available(macOS 12, iOS 14, tvOS 12, watchOS 7, *)
 struct ContentView: View {
 
     var body: some View {
 
-        Text("Hello, Wand |").onAppear {
-
-//            |{ (a: CMAttitude) in
-//
-//            }
-
-        }
+        Text("Hello, Wand |")
 
     }
 
 }
 
-@available(tvOS 13, watchOS 6, *)
+@available(macOS 11.0, tvOS 14, watchOS 7, *)
 #Preview {
     ContentView()
 }
