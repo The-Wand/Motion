@@ -23,15 +23,14 @@ import XCTest
 
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
-
 /// Asking
 extension XCTestCase {
 
-    func test<C, T: Asking, R>(context: C,
+    func auto<C, T: Asking>(test: C, completion:  @escaping (T)->() ) {
+        test(context: context, api: |, completion: completion)
+    }
+
+    func auto<C, T: Asking, R>(test: C,
                                api:   ( (C, (T)->() ) )->(R) ,
                                completion:  @escaping (T)->() ) {
 
@@ -41,8 +40,7 @@ extension XCTestCase {
         _ = api( (context, { (t: T) in
             e.fulfill()
             completion(t)
-        })
-        )
+        }) )
 
         waitForExpectations(timeout: .default)
     }
@@ -51,9 +49,13 @@ extension XCTestCase {
 
 /// AskingNil
 extension XCTestCase {
+    
+    func auto<T: AskingNil>(completion:  @escaping (T)->() ) {
+        test(|, completion: completion)
+    }
 
-    func test<T: AskingNil, R>(_ api:   ( @escaping (T)->() )->(R) ,
-                            completion:  @escaping (T)->() ) {
+    func auto<T: AskingNil, R>(_ api:   ( @escaping (T)->() )->(R) ,
+                               completion:  @escaping (T)->() ) {
 
         let e = expectation()
         e.assertForOverFulfill = true
@@ -68,20 +70,6 @@ extension XCTestCase {
 
 }
 
-/// |
-extension XCTestCase {
-
-    func test<T: AskingNil>(completion:  @escaping (T)->() ) {
-        test(|, completion: completion)
-    }
-
-
-    func test<C, T: Asking>(context: C, completion:  @escaping (T)->() ) {
-        test(context: context, api: |, completion: completion)
-    }
-
-}
-
 /// Tools
 extension XCTestCase {
 
@@ -92,12 +80,5 @@ extension XCTestCase {
     func waitForExpectations() {
         waitForExpectations(timeout: .default)
     }
-
-}
-
-
-extension TimeInterval {
-
-    static var `default` = 4.2
 
 }
