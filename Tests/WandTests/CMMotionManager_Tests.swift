@@ -38,7 +38,6 @@ class CMMotionManager_Tests: XCTestCase {
         waitForExpectations()
     }
 
-    //Test it while walking
     func test_CMDeviceMotion() {
         let e = expectation()
         e.assertForOverFulfill = false
