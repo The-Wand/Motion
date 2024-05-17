@@ -20,10 +20,10 @@
 
 #if canImport(CoreMotion) && !targetEnvironment(simulator) && !os(macOS)
 import CoreMotion
-
-import Wand_CoreMotion
-import Wand
 import XCTest
+
+import wand_core_motion
+import wand
 
 class CMPedometer_Tests: XCTestCase {
 

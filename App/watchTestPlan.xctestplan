@@ -23,7 +23,7 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:App.xcodeproj",
+        "containerPath" : "container:Wand_CoreMotion.xcodeproj",
         "identifier" : "613966472BE0F87A004C18A3",
         "name" : "WatchPlayTests"
       }

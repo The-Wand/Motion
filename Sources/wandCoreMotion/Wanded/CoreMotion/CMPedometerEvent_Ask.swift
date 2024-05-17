@@ -20,16 +20,18 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import Wand
+import wand
 
 /// Ask
 ///
-/// |{ (data: CMPedometerData) in
+/// |{ (event: CMPedometerEvent) in
 ///
 /// }
 ///
+@available(iOS 10.0, watchOS 3.0, *)
+@available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerData: AskingNil, Wanded {
+extension CMPedometerEvent: AskingNil, Wanded {
 
     @inline(__always)
     public
@@ -44,19 +46,18 @@ extension CMPedometerData: AskingNil, Wanded {
 
         //Prepare context
         let source: CMPedometer = wand.obtain()
-        let date: Date          = wand.get() ?? Date()
 
         //Set the cleaner
         wand.setCleaner(for: ask) {
-            source.stopUpdates()
+            source.stopEventUpdates()
         }
 
         //Make request
-        source.startUpdates(from: date) { (data, error) in
-            wand.addIf(exist: data)
+        source.startEventUpdates { (update, error) in
+            wand.addIf(exist: update)
             wand.addIf(exist: error)
         }
-
+        
     }
 
 }

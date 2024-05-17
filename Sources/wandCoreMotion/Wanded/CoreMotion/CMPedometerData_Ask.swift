@@ -19,17 +19,17 @@
 /// 2020 El Machine
 
 #if canImport(CoreMotion)
-import CoreMotion
-import Wand
+import CoreMotion.CMPedometer
+import wand
 
 /// Ask
 ///
-/// |{ (altitude: CMAltitudeData) in
+/// |{ (data: CMPedometerData) in
 ///
 /// }
 ///
 @available(visionOS, unavailable)
-extension CMAttitude: AskingNil, Wanded {
+extension CMPedometerData: AskingNil, Wanded {
 
     @inline(__always)
     public
@@ -42,9 +42,19 @@ extension CMAttitude: AskingNil, Wanded {
 
         //Request for a first time
 
+        //Prepare context
+        let source: CMPedometer = wand.obtain()
+        let date: Date          = wand.get() ?? Date()
+
+        //Set the cleaner
+        wand.setCleaner(for: ask) {
+            source.stopUpdates()
+        }
+
         //Make request
-        wand | .Optional.once(ask.once) { (motion: CMDeviceMotion) in
-            wand.add(motion.attitude)
+        source.startUpdates(from: date) { (data, error) in
+            wand.addIf(exist: data)
+            wand.addIf(exist: error)
         }
 
     }

@@ -25,25 +25,24 @@ import PackageDescription
 let package = Package(
     name: "Wand_CoreMotion",
     defaultLocalization: "ru",
+
     platforms: [
-        .iOS(.v14), .macOS(.v11), .watchOS(.v4), .tvOS(.v12)
+        .iOS(.v14),
+        .macOS(.v12),
+        .tvOS(.v14),
+        .watchOS(.v7),
     ],
+
     products: [
-        .library(
-            name: "Wand_CoreMotion",
-            targets: ["Wand_CoreMotion"]),
+        .library(name: "Wand_CoreMotion", targets: ["wandCoreMotion"])
     ],
+
     dependencies: [
-        .package(url: "https://github.com/El-Machine/Wand.git", from: "1.1.1-rc.2")
+        .package(url: "https://github.com/el-machine/Wand.git", from: "1.1.1-rc.5")
     ],
+
     targets: [
-        .target(
-            name: "Wand_CoreMotion",
-            dependencies: [
-                .product(name: "Wand", package: "Wand")
-            ]),
-        .testTarget(
-            name: "WandTests",
-            dependencies: ["Wand_CoreMotion"]),
+        .target(name: "wandCoreMotion", dependencies: ["Wand"]),
+        .testTarget(name: "wandTests", dependencies: ["Wand"])
     ]
 )

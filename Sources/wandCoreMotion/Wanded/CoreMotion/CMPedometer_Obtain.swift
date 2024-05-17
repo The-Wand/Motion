@@ -20,7 +20,7 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import Wand
+import wand
 
 /// Obtain
 ///

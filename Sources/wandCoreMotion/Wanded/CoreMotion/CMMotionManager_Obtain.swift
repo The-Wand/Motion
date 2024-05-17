@@ -20,46 +20,21 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import Wand
+import wand
 
-/// Ask
+/// Obtain
 ///
-/// |{ (event: CMPedometerEvent) in
+/// let pedometer: CMPedometer = nil|
 ///
-/// }
-///
-@available(iOS 10.0, watchOS 3.0, *)
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerEvent: AskingNil, Wanded {
+extension CMMotionManager: Obtain {
 
     @inline(__always)
-    public
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        //Save ask
-        guard wand.answer(the: ask) else {
-            return
-        }
-
-        //Request for a first time
-
-        //Prepare context
-        let source: CMPedometer = wand.obtain()
-
-        //Set the cleaner
-        wand.setCleaner(for: ask) {
-            source.stopEventUpdates()
-        }
-
-        //Make request
-        source.startEventUpdates { (update, error) in
-            wand.addIf(exist: update)
-            wand.addIf(exist: error)
-        }
-        
+    public static func obtain(by wand: Wand?) -> Self {
+        Self()
     }
-
+     
 }
 
 #endif

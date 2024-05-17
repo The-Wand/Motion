@@ -19,21 +19,37 @@
 /// 2020 El Machine
 
 #if canImport(CoreMotion)
-import CoreMotion.CMPedometer
-import Wand
+import CoreMotion
+import wand
 
-/// Obtain
+/// Ask
 ///
-/// let pedometer: CMPedometer = nil|
+/// |{ (altitude: CMAltitudeData) in
 ///
+/// }
+///
+@available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMMotionManager: Obtain {
+extension CMAttitude: AskingNil, Wanded {
 
     @inline(__always)
-    public static func obtain(by wand: Wand?) -> Self {
-        Self()
+    public
+    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+
+        //Save ask
+        guard wand.answer(the: ask) else {
+            return
+        }
+
+        //Request for a first time
+
+        //Make request
+        wand | .Optional.once(ask.once) { (motion: CMDeviceMotion) in
+            wand.add(motion.attitude)
+        }
+
     }
-     
+
 }
 
 #endif

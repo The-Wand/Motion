@@ -20,12 +20,13 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import Wand
+import wand
 
 /// Obtain
 ///
 /// let source: CMAltimeter = nil|
 ///
+@available(macOS, unavailable)
 @available(visionOS, unavailable)
 extension CMAltimeter: Obtain {
 

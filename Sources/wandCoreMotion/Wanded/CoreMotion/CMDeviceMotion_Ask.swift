@@ -20,7 +20,7 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import Wand
+import wand
 
 /// Ask
 ///
@@ -28,6 +28,7 @@ import Wand
 ///
 /// }
 ///
+@available(macOS, unavailable)
 @available(visionOS, unavailable)
 extension CMDeviceMotion: AskingNil, Wanded {
 

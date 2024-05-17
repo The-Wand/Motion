@@ -20,7 +20,7 @@
 
 import Foundation
 
-import Wand
+import wand
 
 internal
 struct Point: Equatable, Any_ {
