@@ -22,32 +22,10 @@
 import CoreMotion
 import XCTest
 
-import wand_core_motion
-import wand
+import WandCoreMotion
+import Wand
 
 class CMAltimeter_Tests: XCTestCase {
-
-//    func test_<#T#>_once() {
-//        let e = expectation()
-//        e.assertForOverFulfill = true
-//
-//        |.one { (<#t#>: <#T#>) in
-//            e.fulfill()
-//        }
-//
-//        waitForExpectations()
-//    }
-//
-//    func test_<#T#>_while() {
-//        let e = expectation()
-//        e.assertForOverFulfill = false
-//
-//        |.while { (<#t#>: <#T#>) in
-//            e.fulfill()
-//        }
-//
-//        waitForExpectations()
-//    }
 
     func test_CMAltimeter() {
         XCTAssertNotNil(CMAltimeter.self|)

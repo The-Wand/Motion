@@ -21,41 +21,41 @@
 import Foundation
 import XCTest
 
-import wand
+import Wand
 
 /// Asking
 extension XCTestCase {
 
-//    func auto<C, T: Asking>(test: C, completion:  @escaping (T)->() ) {
-//        test(test: test, api: |, completion: completion)
-//    }
-//
-//    func auto<C, T: Asking, R>(test: C,
-//                               api:   ( (C, (T)->() ) )->(R) ,
-//                               completion:  @escaping (T)->() ) {
-//
-//        let e = expectation()
-//        e.assertForOverFulfill = true
-//
-//        _ = api( (context, { (t: T) in
-//            e.fulfill()
-//            completion(t)
-//        }) )
-//
-//        waitForExpectations(timeout: .default)
-//    }
+    func auto<C, T: Asking>(test context: C, completion:  @escaping (T)->() ) {
+        auto(test: context, api: |, completion: completion)
+    }
+
+    func auto<C, T: Asking>(test context: C,
+                            api:   ( (C, (T)->() ) )->(Wand) ,
+                            completion:  @escaping (T)->() ) {
+
+        let e = expectation()
+        e.assertForOverFulfill = true
+
+        _ = api( (context, { (t: T) in
+            e.fulfill()
+            completion(t)
+        }) )
+
+        waitForExpectations(timeout: .default)
+    }
 
 }
 
 /// AskingNil
 extension XCTestCase {
-    
-    func auto<T: AskingNil>(completion:  @escaping (T)->() ) {
-        auto(|, completion: completion)
+
+    func auto_test<T: AskingNil>(completion:  @escaping (T)->() ) {
+        auto_test(|, completion: completion)
     }
 
-    func auto<T: AskingNil, R>(_ api:   ( @escaping (T)->() )->(R) ,
-                               completion:  @escaping (T)->() ) {
+    func auto_test<T: AskingNil>(_ api:   ( @escaping (T)->() )->(Wand) ,
+                                 completion:  @escaping (T)->() ) {
 
         let e = expectation()
         e.assertForOverFulfill = true

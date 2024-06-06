@@ -20,45 +20,23 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import wand
+import Wand
 
-/// Ask
+/// Obtain
 ///
-/// |{ (data: CMPedometerData) in
+/// let pedometer: CMPedometer = nil|
 ///
-/// }
-///
+@available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerData: AskingNil, Wanded {
+extension CMMotionManager: Obtain {
 
     @inline(__always)
-    public
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        //Save ask
-        guard wand.answer(the: ask) else {
-            return
-        }
-
-        //Request for a first time
-
-        //Prepare context
-        let source: CMPedometer = wand.obtain()
-        let date: Date          = wand.get() ?? Date()
-
-        //Set the cleaner
-        wand.setCleaner(for: ask) {
-            source.stopUpdates()
-        }
-
-        //Make request
-        source.startUpdates(from: date) { (data, error) in
-            wand.addIf(exist: data)
-            wand.addIf(exist: error)
-        }
-
+    public 
+    static
+    func obtain(by wand: Wand?) -> Self {
+        Self()
     }
-
+     
 }
 
 #endif

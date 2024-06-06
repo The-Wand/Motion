@@ -22,8 +22,8 @@
 import CoreMotion
 import XCTest
 
-import wand_core_motion
-import wand
+import WandCoreMotion
+import Wand
 
 class CMMotionManager_Tests: XCTestCase {
 

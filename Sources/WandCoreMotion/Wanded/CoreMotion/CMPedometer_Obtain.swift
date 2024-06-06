@@ -18,12 +18,24 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(CoreMotion)
+import CoreMotion.CMPedometer
+import Wand
 
-public extension ClosedRange where Bound: FixedWidthInteger {
+/// Obtain
+///
+/// let pedometer: CMPedometer = nil|
+///
+@available(visionOS, unavailable)
+extension CMPedometer: Obtain {
 
-    var any: Bound {
-        .random(in: self)
+    @inline(__always)
+    public 
+    static
+    func obtain(by wand: Wand?) -> Self {
+        Self()
     }
-
+     
 }
+
+#endif

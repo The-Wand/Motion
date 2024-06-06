@@ -20,22 +20,22 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import wand
+import Wand
 
 /// Ask
 ///
-/// |{ (event: CMPedometerEvent) in
+/// |{ (motion: CMDeviceMotion) in
 ///
 /// }
 ///
-@available(iOS 10.0, watchOS 3.0, *)
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerEvent: AskingNil, Wanded {
+extension CMDeviceMotion: AskingNil, Wanded {
 
-    @inline(__always)
-    public
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    @inline(__always) 
+    public 
+    static 
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
         //Save ask
         guard wand.answer(the: ask) else {
@@ -45,19 +45,29 @@ extension CMPedometerEvent: AskingNil, Wanded {
         //Request for a first time
 
         //Prepare context
-        let source: CMPedometer = wand.obtain()
+        let source: CMMotionManager             = wand.obtain()
+        source.deviceMotionUpdateInterval       = wand.get() ?? 0.1
+
+        let frame: CMAttitudeReferenceFrame?    = wand.get()
+        let q: OperationQueue                   = wand.get() ?? .init()
+
+        let handler: CMDeviceMotionHandler = { motion, error in
+            wand.addIf(exist: motion)
+            wand.addIf(exist: error)
+        }
 
         //Set the cleaner
         wand.setCleaner(for: ask) {
-            source.stopEventUpdates()
+            source.stopDeviceMotionUpdates()
         }
 
-        //Make request
-        source.startEventUpdates { (update, error) in
-            wand.addIf(exist: update)
-            wand.addIf(exist: error)
+        //Request
+        if let frame {
+            source.startDeviceMotionUpdates(using: frame, to: q, withHandler: handler)
+        } else {
+            source.startDeviceMotionUpdates(to: q, withHandler: handler)
         }
-        
+
     }
 
 }

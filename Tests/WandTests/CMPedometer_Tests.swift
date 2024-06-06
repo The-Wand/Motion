@@ -22,8 +22,8 @@
 import CoreMotion
 import XCTest
 
-import wand_core_motion
-import wand
+import WandCoreMotion
+import Wand
 
 class CMPedometer_Tests: XCTestCase {
 
@@ -43,7 +43,7 @@ class CMPedometer_Tests: XCTestCase {
         let e = expectation()
         e.assertForOverFulfill = false
 
-        |{ (location: CMPedometerData) in
+        |{ (data: CMPedometerData) in
             e.fulfill()
         }
 

@@ -18,19 +18,39 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation
+#if canImport(CoreMotion)
+import CoreMotion
+import Wand
 
+/// Ask
+///
+/// |{ (altitude: CMAltitudeData) in
+///
+/// }
+///
+@available(macOS, unavailable)
+@available(visionOS, unavailable)
+extension CMAttitude: AskingNil, Wanded {
 
-extension String: Any_ {
+    @inline(__always)
+    public
+    static 
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
-    static var any: Self {
+        //Save ask
+        guard wand.answer(the: ask) else {
+            return
+        }
 
-        #if DEBUG
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non gravida felis. Vivamus interdum massa nulla, eu egestas ipsum eleifend non. Ut vel augue et orci fermentum consequat eget nec est. Aenean eleifend tempor nibh, a posuere lacus pharetra non. Praesent elementum ac urna convallis porttitor."
-        #else
-            .init()
-        #endif
+        //Request for a first time
+
+        //Make request
+        wand | .Optional.once(ask.once) { (motion: CMDeviceMotion) in
+            wand.add(motion.attitude)
+        }
 
     }
 
 }
+
+#endif

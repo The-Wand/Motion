@@ -21,7 +21,7 @@
 import Foundation
 import XCTest
 
-import wand
+import Wand
 
 /// Test Unit
 //struct Unit {
@@ -31,5 +31,18 @@ import wand
 extension TimeInterval {
 
     static var `default` = 4.2
+
+}
+
+///Performance
+extension [XCTMetric] {
+
+    static
+    var `default`: Self = {[
+        XCTCPUMetric(),
+        XCTClockMetric(),
+        XCTMemoryMetric(),
+        XCTStorageMetric(),
+    ]}()
 
 }

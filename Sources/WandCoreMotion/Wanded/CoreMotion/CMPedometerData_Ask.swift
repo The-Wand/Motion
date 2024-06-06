@@ -20,21 +20,20 @@
 
 #if canImport(CoreMotion)
 import CoreMotion.CMPedometer
-import wand
+import Wand
 
 /// Ask
 ///
-/// |{ (motion: CMDeviceMotion) in
+/// |{ (data: CMPedometerData) in
 ///
 /// }
 ///
-@available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMDeviceMotion: AskingNil, Wanded {
+extension CMPedometerData: AskingNil, Wanded {
 
-    @inline(__always) 
-    public 
-    static 
+    @inline(__always)
+    public
+    static
     func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
         //Save ask
@@ -45,29 +44,19 @@ extension CMDeviceMotion: AskingNil, Wanded {
         //Request for a first time
 
         //Prepare context
-        let source: CMMotionManager = wand.obtain()
-        source.deviceMotionUpdateInterval   = wand.get() ?? 0.1
-
-        let frame: CMAttitudeReferenceFrame? = wand.get()
-        let q: OperationQueue              = wand.get() ?? .init()
-
-        let handler: CMDeviceMotionHandler = { motion, error in
-            wand.addIf(exist: motion)
-            wand.addIf(exist: error)
-        }
+        let source: CMPedometer = wand.obtain()
+        let date: Date          = wand.get() ?? Date()
 
         //Set the cleaner
         wand.setCleaner(for: ask) {
-            source.stopDeviceMotionUpdates()
+            source.stopUpdates()
         }
 
-        //Request
-        if let frame {
-            source.startDeviceMotionUpdates(using: frame, to: q, withHandler: handler)
-        } else {
-            source.startDeviceMotionUpdates(to: q, withHandler: handler)
+        //Make request
+        source.startUpdates(from: date) { (data, error) in
+            wand.addIf(exist: data)
+            wand.addIf(exist: error)
         }
-
 
     }
 

@@ -97,7 +97,7 @@ data | .while { (bodies: [VNHumanBodyPoseObservation]) in
 
 ```
 
-```swift
+```bash
 #Customization
 let wand = |{ (hands: [VNHumanHandPoseObservation]) in
 
