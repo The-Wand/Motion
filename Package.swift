@@ -34,21 +34,22 @@ let package = Package(
     ],
     
     products: [
-        .library(name: "Wand_CoreMotion", targets: ["WandCoreMotion"])
+        .library(name: "Wand_CoreMotion", targets: ["Wand_CoreMotion"])
     ],
     
     dependencies: [
         .package(url: "https://github.com/el-machine/Any.git", from: "1.0.1"),
-        .package(url: "https://github.com/el-machine/Wand.git", from: "1.3.5"),
+        .package(url: "https://github.com/el-machine/Wand.git", from: "1.3.5")
     ],
     
     targets: [
         
-        .target(name: "WandCoreMotion", dependencies: ["Wand"] ),
+        .target(name: "Wand_CoreMotion", dependencies: ["Wand"] ),
         .testTarget(name: "wandTests", dependencies:
                         [
                             .product(name: "Any_", package: "Any"),
-                            "WandCoreMotion",
+                            "Wand",
+                            "Wand_CoreMotion",
                         ]
                    )
         
