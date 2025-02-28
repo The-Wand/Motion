@@ -22,16 +22,15 @@
 import CoreMotion
 import XCTest
 
-import WandCoreMotion
+import Wand_CoreMotion
 import Wand
 
 class CMMotionManager_Tests: XCTestCase {
 
-    func test_CMAltitudeData() {
+    func test_CMDeviceMotion() {
         let e = expectation()
-        e.assertForOverFulfill = false
 
-        |.one { (altitude: CMAttitude) in
+        |.one { (motion: CMDeviceMotion) in
             e.fulfill()
         }
 

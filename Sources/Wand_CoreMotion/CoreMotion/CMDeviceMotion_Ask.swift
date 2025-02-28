@@ -19,7 +19,7 @@
 /// 2020 El Machine
 
 #if canImport(CoreMotion)
-import CoreMotion.CMPedometer
+import CoreMotion.CMMotionManager
 import Wand
 
 /// Ask
@@ -30,7 +30,8 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMDeviceMotion: AskingNil, Wanded {
+extension CMDeviceMotion: @retroactive Asking {}
+extension CMDeviceMotion: @retroactive AskingNil, @retroactive Wanded {
 
     @inline(__always) 
     public 
@@ -56,7 +57,7 @@ extension CMDeviceMotion: AskingNil, Wanded {
             wand.addIf(exist: error)
         }
 
-        //Set the cleaner
+        //Set cleaner
         wand.setCleaner(for: ask) {
             source.stopDeviceMotionUpdates()
         }
