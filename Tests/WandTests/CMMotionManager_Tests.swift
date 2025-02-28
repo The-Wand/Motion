@@ -48,10 +48,10 @@ class CMMotionManager_Tests: XCTestCase {
         waitForExpectations()
     }
     
+    func test_CMMagnetometerData() {
         let e = expectation()
-        e.assertForOverFulfill = false
 
-        |{ (motion: CMDeviceMotion) in
+        |.one { (data: CMMagnetometerData) in
             e.fulfill()
         }
 
