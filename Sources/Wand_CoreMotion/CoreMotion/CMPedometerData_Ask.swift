@@ -29,7 +29,9 @@ import Wand
 /// }
 ///
 @available(visionOS, unavailable)
-extension CMPedometerData: AskingNil, Wanded {
+
+extension CMPedometerData: @retroactive Asking {}
+extension CMPedometerData: @retroactive AskingNil, @retroactive Wanded {
 
     @inline(__always)
     public
@@ -47,7 +49,7 @@ extension CMPedometerData: AskingNil, Wanded {
         let source: CMPedometer = wand.obtain()
         let date: Date          = wand.get() ?? Date()
 
-        //Set the cleaner
+        //Set cleaner
         wand.setCleaner(for: ask) {
             source.stopUpdates()
         }

@@ -31,7 +31,9 @@ import Wand
 @available(iOS 10.0, watchOS 3.0, *)
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerEvent: AskingNil, Wanded {
+
+extension CMPedometerEvent: @retroactive Asking {}
+extension CMPedometerEvent: @retroactive AskingNil, @retroactive Wanded {
 
     @inline(__always)
     public
@@ -48,7 +50,7 @@ extension CMPedometerEvent: AskingNil, Wanded {
         //Prepare context
         let source: CMPedometer = wand.obtain()
 
-        //Set the cleaner
+        //Set cleaner
         wand.setCleaner(for: ask) {
             source.stopEventUpdates()
         }

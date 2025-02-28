@@ -22,14 +22,13 @@
 import CoreMotion
 import XCTest
 
-import WandCoreMotion
+import Wand_CoreMotion
 import Wand
 
 class CMPedometer_Tests: XCTestCase {
 
     func test_CMPedometerEvent() {
         let e = expectation()
-        e.assertForOverFulfill = false
 
         |.one { (event: CMPedometerEvent) in
             e.fulfill()
@@ -41,9 +40,8 @@ class CMPedometer_Tests: XCTestCase {
     //Test it while walking
     func test_CMPedometerData() {
         let e = expectation()
-        e.assertForOverFulfill = false
 
-        |{ (data: CMPedometerData) in
+        |.one { (data: CMPedometerData) in
             e.fulfill()
         }
 
