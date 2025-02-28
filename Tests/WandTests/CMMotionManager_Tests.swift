@@ -37,8 +37,17 @@ class CMMotionManager_Tests: XCTestCase {
 
         waitForExpectations()
     }
+    
+    func test_CMGyroData() {
+        let e = expectation()
 
-    func test_CMDeviceMotion() {
+        |.one { (motion: CMGyroData) in
+            e.fulfill()
+        }
+
+        waitForExpectations()
+    }
+    
         let e = expectation()
         e.assertForOverFulfill = false
 
