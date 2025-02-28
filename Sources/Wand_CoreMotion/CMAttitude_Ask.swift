@@ -49,9 +49,9 @@ extension CMAttitude: @retroactive AskingNil, @retroactive Wanded {
         let source: CMAltimeter = wand.obtain()
         
         //TODO: Test isRelativeAltitudeAvailable
-//        guard CMAltimeter.isRelativeAltitudeAvailable() else {
-//            return
-//        }
+        guard CMAltimeter.isRelativeAltitudeAvailable() else {
+            return
+        }
 
         let q: OperationQueue = wand.get() ?? .init()
 
