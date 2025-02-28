@@ -27,6 +27,16 @@ import Wand
 
 class CMMotionManager_Tests: XCTestCase {
 
+    func test_CMAltitudeData() {
+        let e = expectation()
+
+        |.one { (data: CMAltitudeData) in
+            e.fulfill()
+        }
+
+        waitForExpectations()
+    }
+    
     func test_CMDeviceMotion() {
         let e = expectation()
 

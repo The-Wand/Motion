@@ -22,6 +22,7 @@
 import CoreMotion
 
 typealias Attitude          = CMAttitude
+typealias AltitudeData      = CMAltitudeData
 typealias DeviceMotion      = CMDeviceMotion
 typealias MagnetometerData  = CMMagnetometerData
 typealias GyroData          = CMGyroData
