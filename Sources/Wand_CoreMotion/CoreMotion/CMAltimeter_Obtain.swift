@@ -19,7 +19,7 @@
 /// 2020 El Machine
 
 #if canImport(CoreMotion)
-import CoreMotion.CMPedometer
+import CoreMotion.CMAltimeter
 import Wand
 
 /// Obtain
@@ -28,7 +28,8 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAltimeter: Obtain {
+extension CMAltimeter: @retroactive Wanded {}
+extension CMAltimeter: @retroactive Obtain {
 
     @inline(__always)
     public 

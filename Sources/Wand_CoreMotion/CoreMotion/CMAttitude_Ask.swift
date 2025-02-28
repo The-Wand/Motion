@@ -19,7 +19,7 @@
 /// 2020 El Machine
 
 #if canImport(CoreMotion)
-import CoreMotion
+import CoreMotion.CMAltimeter
 import Wand
 
 /// Ask
@@ -30,7 +30,8 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAttitude: AskingNil, Wanded {
+extension CMAttitude: @retroactive Asking {}
+extension CMAttitude: @retroactive AskingNil, @retroactive Wanded {
 
     @inline(__always)
     public
@@ -44,9 +45,25 @@ extension CMAttitude: AskingNil, Wanded {
 
         //Request for a first time
 
-        //Make request
-        wand | .Optional.once(ask.once) { (motion: CMDeviceMotion) in
-            wand.add(motion.attitude)
+        //Prepare context
+        let source: CMAltimeter = wand.obtain()
+        
+        //TODO: Test isRelativeAltitudeAvailable
+//        guard CMAltimeter.isRelativeAltitudeAvailable() else {
+//            return
+//        }
+
+        let q: OperationQueue = wand.get() ?? .init()
+
+        //Set cleaner
+        wand.setCleaner(for: ask) {
+            source.stopRelativeAltitudeUpdates()
+        }
+
+        //Request data
+        source.startRelativeAltitudeUpdates(to: q) { (data, error) in
+            wand.addIf(exist: data)
+            wand.addIf(exist: error)
         }
 
     }

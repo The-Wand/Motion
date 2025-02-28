@@ -22,10 +22,31 @@
 import CoreMotion
 import XCTest
 
-import WandCoreMotion
+import Wand_CoreMotion
 import Wand
 
 class CMAltimeter_Tests: XCTestCase {
+    
+    //TODO: Rewrite to CMAltimeter
+    func test_CMAltitudeData() {
+        let e = expectation()
+
+        |.one { (altitude: CMAttitude) in
+            e.fulfill()
+        }
+
+        waitForExpectations()
+    }
+    
+//    func test_CMAbsoluteAltitudeData() {
+//        let e = expectation()
+//
+//        |.one { (altitude: CMAbsoluteAltitudeData) in
+//            e.fulfill()
+//        }
+//
+//        waitForExpectations()
+//    }
 
     func test_CMAltimeter() {
         XCTAssertNotNil(CMAltimeter.self|)
