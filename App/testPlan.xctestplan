@@ -22,9 +22,9 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Wand_CoreMotion.xcodeproj",
+        "containerPath" : "container:WandMotion.xcodeproj",
         "identifier" : "618D53D02BE3C5120098DB6F",
-        "name" : "WandTests"
+        "name" : "wandTests"
       }
     }
   ],

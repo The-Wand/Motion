@@ -16,34 +16,26 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import SwiftUI
+#if canImport(CoreMotion)
+import CoreMotion.CMAltimeter
+import Wand
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-@main
-struct PlayApp: App {
+/// Obtain
+///
+/// let source: CMAltimeter = nil|
+///
+@available(macOS, unavailable)
+@available(visionOS, unavailable)
+extension CMAltimeter: @retroactive Wanded {}
+extension CMAltimeter: @retroactive Obtain {
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+    @inline(__always)
+    public 
+    static
+    func obtain(by wand: Wand?) -> Self {
+        Self()
     }
 
 }
 
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-struct ContentView: View {
-    var body: some View {
-
-        VStack {
-            Image(systemName: "wand.and.stars")
-            Text("Hello, world!")
-        }
-        .padding()
-
-    }
-}
-
-@available(iOS 14, macOS 12, tvOS 14, watchOS 7, *)
-#Preview {
-    ContentView()
-}
+#endif

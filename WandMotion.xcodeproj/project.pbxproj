@@ -19,10 +19,10 @@
 		613A503E2C11B37800E2E3B2 /* CMPedometer_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A50352C11B37700E2E3B2 /* CMPedometer_Tests.swift */; };
 		613A503F2C11B37800E2E3B2 /* CMAltimeter_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A50362C11B37800E2E3B2 /* CMAltimeter_Tests.swift */; };
 		613A50402C11B37800E2E3B2 /* CMAltimeter_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613A50362C11B37800E2E3B2 /* CMAltimeter_Tests.swift */; };
-		615159132BF76A8C001646EA /* Wand_CoreMotion in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* Wand_CoreMotion */; };
+		615159132BF76A8C001646EA /* WandMotion in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandMotion */; };
 		6162625428BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
-		61F648C72BEA122900C2625C /* Wand_CoreMotion in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* Wand_CoreMotion */; };
+		61F648C72BEA122900C2625C /* WandMotion in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandMotion */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		61B28C092C11B724004A41F1 /* Package.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Package.xctestplan; sourceTree = "<group>"; };
 		61B464E72BEB76B70064B4C1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		61DA63982BF7712C00499639 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = Wand_CoreMotion.xcodeproj/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
+		61DA63982BF7712C00499639 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = WandMotion.xcodeproj/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		OBJ_141 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_142 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61F648C72BEA122900C2625C /* Wand_CoreMotion in Frameworks */,
+				61F648C72BEA122900C2625C /* WandMotion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				615159132BF76A8C001646EA /* Wand_CoreMotion in Frameworks */,
+				615159132BF76A8C001646EA /* WandMotion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +190,7 @@
 			);
 			name = watchPlay;
 			packageProductDependencies = (
-				61F648C62BEA122900C2625C /* Wand_CoreMotion */,
+				61F648C62BEA122900C2625C /* WandMotion */,
 			);
 			productName = "WatchPlay Watch App";
 			productReference = 613966152BE0F4EF004C18A3 /* watchPlay.app */;
@@ -228,7 +228,7 @@
 			);
 			name = Play;
 			packageProductDependencies = (
-				61F648C62BEA122900C2625C /* Wand_CoreMotion */,
+				61F648C62BEA122900C2625C /* WandMotion */,
 			);
 			productName = "Sandbox (iOS)";
 			productReference = 6162624C28BC8E2B00D63EA5 /* Play.app */;
@@ -282,7 +282,7 @@
 					};
 				};
 			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Wand_CoreMotion" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "WandMotion" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -414,7 +414,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_PREVIEWS = YES;
@@ -475,7 +475,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -529,7 +529,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -578,7 +578,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -640,7 +640,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -740,7 +740,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -815,7 +815,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -870,7 +870,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 112;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1068,7 +1068,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		OBJ_2 /* Build configuration list for PBXProject "Wand_CoreMotion" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "WandMotion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,
@@ -1087,10 +1087,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		61F648C62BEA122900C2625C /* Wand_CoreMotion */ = {
+		61F648C62BEA122900C2625C /* WandMotion */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 61A37BC52BE24B97007B7FEE /* XCLocalSwiftPackageReference "." */;
-			productName = Wand_CoreMotion;
+			productName = WandMotion;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -23,7 +23,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Wand_CoreMotion",
+    name: "WandMotion",
     defaultLocalization: "ru",
     
     platforms: [
@@ -34,22 +34,22 @@ let package = Package(
     ],
     
     products: [
-        .library(name: "Wand_CoreMotion", targets: ["Wand_CoreMotion"])
+        .library(name: "WandMotion", targets: ["WandMotion"])
     ],
     
     dependencies: [
-        .package(url: "https://github.com/el-machine/Any.git", from: "1.0.1"),
-        .package(url: "https://github.com/el-machine/Wand.git", from: "1.3.5")
+        .package(url: "https://github.com/The-Wand/Any.git", from: "1.0.1"),
+        .package(url: "https://github.com/The-Wand/Wand.git", from: "1.5.2")
     ],
     
     targets: [
         
-        .target(name: "Wand_CoreMotion", dependencies: ["Wand"] ),
+        .target(name: "WandMotion", dependencies: ["Wand"] ),
         .testTarget(name: "wandTests", dependencies:
                         [
                             .product(name: "Any_", package: "Any"),
                             "Wand",
-                            "Wand_CoreMotion",
+                            "WandMotion",
                         ]
                    )
         

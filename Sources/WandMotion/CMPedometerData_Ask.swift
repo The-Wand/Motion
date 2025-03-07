@@ -1,13 +1,11 @@
 ///
-/// Copyright © 2020-2024 El Machine 🤖
-/// https://el-machine.com/
+/// Copyright 2020 Alexander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
 ///
-/// 1) LICENSE file
-/// 2) https://apache.org/licenses/LICENSE-2.0
+///     http://www.apache.org/licenses/LICENSE-2.0
 ///
 /// Unless required by applicable law or agreed to in writing, software
 /// distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,26 +14,26 @@
 /// limitations under the License.
 ///
 /// Created by Alex Kozin
-/// 2020 El Machine
+/// El Machine 🤖
 
 #if canImport(CoreMotion)
-import CoreMotion.CMMotionManager
+import CoreMotion.CMPedometer
 import Wand
 
 /// Ask
 ///
-/// |{ (data: CMGyroData) in
+/// |{ (data: CMPedometerData) in
 ///
 /// }
 ///
-@available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMGyroData: @retroactive Asking {}
-extension CMGyroData: @retroactive AskingNil, @retroactive Wanded {
 
-    @inline(__always) 
-    public 
-    static 
+extension CMPedometerData: @retroactive Asking {}
+extension CMPedometerData: @retroactive AskingNil, @retroactive Wanded {
+
+    @inline(__always)
+    public
+    static
     func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
         //Save ask
@@ -46,18 +44,16 @@ extension CMGyroData: @retroactive AskingNil, @retroactive Wanded {
         //Request for a first time
 
         //Prepare context
-        let source: CMMotionManager             = wand.obtain()
-        source.gyroUpdateInterval               = wand.get() ?? 0.1
-        
-        let q: OperationQueue                   = wand.get() ?? .init()
+        let source: CMPedometer = wand.obtain()
+        let date: Date          = wand.get() ?? Date()
 
         //Set cleaner
         wand.setCleaner(for: ask) {
-            source.stopGyroUpdates()
+            source.stopUpdates()
         }
 
-        //Request
-        source.startGyroUpdates(to: q) { (data, error) in
+        //Make request
+        source.startUpdates(from: date) { (data, error) in
             wand.addIf(exist: data)
             wand.addIf(exist: error)
         }

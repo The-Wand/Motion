@@ -1,13 +1,11 @@
 ///
-/// Copyright © 2020-2024 El Machine 🤖
-/// https://el-machine.com/
+/// Copyright 2020 Alexander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
 ///
-/// 1) LICENSE file
-/// 2) https://apache.org/licenses/LICENSE-2.0
+///     http://www.apache.org/licenses/LICENSE-2.0
 ///
 /// Unless required by applicable law or agreed to in writing, software
 /// distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,20 +14,19 @@
 /// limitations under the License.
 ///
 /// Created by Alex Kozin
-/// 2020 El Machine
+/// El Machine 🤖
 
 #if canImport(CoreMotion)
-import CoreMotion.CMAltimeter
+import CoreMotion.CMPedometer
 import Wand
 
 /// Obtain
 ///
-/// let source: CMAltimeter = nil|
+/// let pedometer: CMPedometer = nil|
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAltimeter: @retroactive Wanded {}
-extension CMAltimeter: @retroactive Obtain {
+extension CMMotionManager: Obtain {
 
     @inline(__always)
     public 
@@ -37,7 +34,7 @@ extension CMAltimeter: @retroactive Obtain {
     func obtain(by wand: Wand?) -> Self {
         Self()
     }
-
+     
 }
 
 #endif

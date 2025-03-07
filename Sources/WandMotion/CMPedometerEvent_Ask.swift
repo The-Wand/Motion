@@ -1,13 +1,11 @@
 ///
-/// Copyright © 2020-2024 El Machine 🤖
-/// https://el-machine.com/
+/// Copyright 2020 Alexander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
 ///
-/// 1) LICENSE file
-/// 2) https://apache.org/licenses/LICENSE-2.0
+///     http://www.apache.org/licenses/LICENSE-2.0
 ///
 /// Unless required by applicable law or agreed to in writing, software
 /// distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,26 +14,28 @@
 /// limitations under the License.
 ///
 /// Created by Alex Kozin
-/// 2020 El Machine
+/// El Machine 🤖
 
 #if canImport(CoreMotion)
-import CoreMotion
+import CoreMotion.CMPedometer
 import Wand
 
 /// Ask
 ///
-/// |{ (attitude: CMAttitude) in
+/// |{ (event: CMPedometerEvent) in
 ///
 /// }
 ///
+@available(iOS 10.0, watchOS 3.0, *)
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAttitude: @retroactive Asking {}
-extension CMAttitude: @retroactive AskingNil, @retroactive Wanded {
+
+extension CMPedometerEvent: @retroactive Asking {}
+extension CMPedometerEvent: @retroactive AskingNil, @retroactive Wanded {
 
     @inline(__always)
     public
-    static 
+    static
     func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
         //Save ask
@@ -45,11 +45,20 @@ extension CMAttitude: @retroactive AskingNil, @retroactive Wanded {
 
         //Request for a first time
 
-        //Make request
-        wand | .Optional.once(ask.once) { (motion: CMDeviceMotion) in
-            wand.add(motion.attitude)
+        //Prepare context
+        let source: CMPedometer = wand.obtain()
+
+        //Set cleaner
+        wand.setCleaner(for: ask) {
+            source.stopEventUpdates()
         }
 
+        //Make request
+        source.startEventUpdates { (update, error) in
+            wand.addIf(exist: update)
+            wand.addIf(exist: error)
+        }
+        
     }
 
 }
