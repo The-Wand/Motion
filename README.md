@@ -1,137 +1,53 @@
 
-## API for Any (thing) |
-**An ideal API acts as a black box 📦**  
-**It’s possible to incapsulate whole data receiving and memory managment into one symbol?**  
-[Medium.com](https://medium.com/@al.kozin/universal-api-7ddc67bb0aa5)
-[Habr.com](https://habr.com/ru/post/674010/)
+## **[Declarative Programming Language](https://github.com/The-Wand/Wand)**
 
->In Unix-like computer operating systems, a [pipeline](https://en.wikipedia.org/wiki/Pipeline_(Unix)) is a mechanism for inter-process communication using message passing. A pipeline is a set of processes chained together by their standard streams, so that the output text of each process (stdout) is passed directly as input (stdin) to the next one. The second process is started as the first process is still executing, and they are executed concurrently.
+|wand created to support all platfroms   
+Prototype implemented on Swift
 
-```bash
-command1 | command2 | command3
+### Swift Package
+[📦 |Foundation](https://github.com/The-Wand/Foundation)  
 
-ls -l | grep key | less
-```
+### ⚙️ Usage
 
-### Swift
-```bash
-#Create handler  
-{ (foo: Foo) in
-
-}
-
-```
-
-```bash
-#Black box
-prefix func | (handler: @escaping (Foo)->() )
-
-#Call API
-| { (foo: Foo) in
-
-}
-
-```
-
-```bash
-#Retreive data (profit)
-handler(foo)
-
-``` 
-
-### Usage
-
-```bash
-
-#Request current Location
-|{ (location: CLLocation) in 
-
-}
-
-#Request .authorizedAlways permissions once
-CLAuthorizationStatus.authorizedAlways | .one { status in
-            
-}
-
-#Update Pedometer Data
+```swift
+//Request pedometer data updates
 |{ (data: CMPedometerData) in 
 
 }
-
-#Scan for Bluetooth Peripheral
-|{ (peripheral: CBPeripheral) in 
-
-}
-
-#Wait for a Notification
-UIWindow.keyboardWillShowNotification | { (n: Notification) in
-            
-}
-
-#Enumerate Contacts
-CNContact.predicateForContacts(matchingName: "John Appleseed") | .every { (contact: CNContact) in
-                        
-}
-
-#Scan a tag
-| .every { (tag: NFCNDEFTag) in
-
-}
-
-#Perform Face Observation
-URL(string: "http://example.com/image.jpg") | { (faces: [VNFaceObservation]) in
-
-}
-
-#Perform Pose Observation
-data | .while { (bodies: [VNHumanBodyPoseObservation]) in
-    bodies < 2
-}
-
-#Detect shake
-|{ (motion: UIEvent.EventSubtype) in
-    if motion == .motionShake {
-                
-    }
-}
-
 ```
+
+### 💡 Idea
+  Imagine that you have the black box that can give you an ```Any``` object.   
+  You don't know what's already in the box and [what happens inside.](https://wikipedia.org/wiki/Encapsulation_(computer_programming))   
+      
+  Ask for object that you need with |
 
 ```bash
-#Customization
-let wand = |{ (hands: [VNHumanHandPoseObservation]) in
-
+|{ (result: Object) in
+            
 }
-
-let request: VNDetectHumanHandPoseRequest = wand.obtain()
-request.maximumHandCount = 4
-
-let preview: AVCaptureVideoPreviewLayer = wand.obtain()
-view.layer.addSublayer(preview!)
-
 ```
-### Idea
-  Imagine that you have a black box that can give you any object 💡  
-  You don't know what is already in box or what will happens inside ⚙️   
-  Simply ask for objects that you need
+```bash
+ingredients | { (result: Object) in
+            
+}
+```
+```bash
+ingredients | .one { (t: T) in
+            
+} | .every { (u: U) in
 
-### Сoncept
+} | .while { (v: V) in
+  true
+}
+```
 
-Wand started from idea about receiving anything in most efficient and fast way 🪄  
-Just add on¯e sign to completion handler and retreive the result 📦  
+### 🪄 Сoncept
 
-You ideas, comments, contribution are welcome |
+Wand started from the idea about receiving anything in most efficient way.   
+Add one sign to anything and retreive the result 📦
 
-Tasks
-
-- [x] Contacts
-- [x] CoreLocation
-- [x] CoreMotion
-- [x] NSNotification
-- [ ] CoreNFC
-- [ ] Vision
-- [ ] Rest
-- [ ] MultipeerConnectivity
+You ideas, comments and contributions are welcome |
 
 [Alex Kozin](mailto:al@el-machine.com)  
-[El Machine 🤖](https://el-machine.com) 2020...
+[El Machine 🤖](https://el-machine.com)
