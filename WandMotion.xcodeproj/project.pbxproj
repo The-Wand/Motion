@@ -64,7 +64,6 @@
 		61B1B41C2BC9696200BD1F36 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		61B28C092C11B724004A41F1 /* Package.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Package.xctestplan; sourceTree = "<group>"; };
 		61B464E72BEB76B70064B4C1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		61DA63982BF7712C00499639 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = WandMotion.xcodeproj/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
 		OBJ_141 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_142 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,7 +163,6 @@
 				6162624428BC8E2A00D63EA5 /* App */,
 				615158EB2BF765A2001646EA /* info.plist */,
 				61B464E72BEB76B70064B4C1 /* Package.swift */,
-				61DA63982BF7712C00499639 /* Package.resolved */,
 				OBJ_138 /* Products */,
 				618F8ED22BE9FDCE00618E7C /* Tests */,
 				615159052BF76666001646EA /* CONTRIB.TXT */,
