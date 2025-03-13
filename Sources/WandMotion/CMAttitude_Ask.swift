@@ -28,11 +28,7 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAttitude: @retroactive Asking {}
-
-@available(macOS, unavailable)
-@available(visionOS, unavailable)
-extension CMAttitude: @retroactive AskingNil, @retroactive Wanded {
+extension CMAttitude: AskingNil, Wanded {
 
     @inline(__always)
     public

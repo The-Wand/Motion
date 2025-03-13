@@ -29,9 +29,7 @@ import Wand
 @available(iOS 10.0, watchOS 3.0, *)
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-
-extension CMPedometerEvent: @retroactive Asking {}
-extension CMPedometerEvent: @retroactive AskingNil, @retroactive Wanded {
+extension CMPedometerEvent: AskingNil, Wanded {
 
     @inline(__always)
     public

@@ -26,8 +26,7 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAltimeter: @retroactive Wanded {}
-extension CMAltimeter: @retroactive Obtain {
+extension CMAltimeter: Obtain {
 
     @inline(__always)
     public 

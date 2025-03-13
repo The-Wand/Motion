@@ -27,9 +27,7 @@ import Wand
 /// }
 ///
 @available(visionOS, unavailable)
-
-extension CMPedometerData: @retroactive Asking {}
-extension CMPedometerData: @retroactive AskingNil, @retroactive Wanded {
+extension CMPedometerData: AskingNil, Wanded {
 
     @inline(__always)
     public

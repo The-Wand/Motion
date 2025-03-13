@@ -28,8 +28,7 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMMagnetometerData: @retroactive Asking {}
-extension CMMagnetometerData: @retroactive AskingNil, @retroactive Wanded {
+extension CMMagnetometerData: AskingNil, Wanded {
 
     @inline(__always)
     public

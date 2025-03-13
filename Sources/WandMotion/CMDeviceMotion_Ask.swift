@@ -28,8 +28,7 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMDeviceMotion: @retroactive Asking {}
-extension CMDeviceMotion: @retroactive AskingNil, @retroactive Wanded {
+extension CMDeviceMotion: AskingNil, Wanded {
 
     @inline(__always) 
     public 

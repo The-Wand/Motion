@@ -28,8 +28,7 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAltitudeData: @retroactive Asking {}
-extension CMAltitudeData: @retroactive AskingNil, @retroactive Wanded {
+extension CMAltitudeData: AskingNil, Wanded {
 
     @inline(__always)
     public

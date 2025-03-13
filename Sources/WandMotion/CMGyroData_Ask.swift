@@ -28,8 +28,7 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMGyroData: @retroactive Asking {}
-extension CMGyroData: @retroactive AskingNil, @retroactive Wanded {
+extension CMGyroData: AskingNil, Wanded {
 
     @inline(__always) 
     public 
