@@ -20,7 +20,11 @@
 import CoreMotion
 
 typealias Attitude          = CMAttitude
+
+#if !os(macOS) && !os(visionOS)
 typealias AltitudeData      = CMAltitudeData
+#endif
+
 typealias DeviceMotion      = CMDeviceMotion
 typealias MagnetometerData  = CMMagnetometerData
 typealias GyroData          = CMGyroData
