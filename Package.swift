@@ -21,7 +21,6 @@ import PackageDescription
 
 let package = Package(
     name: "WandMotion",
-    defaultLocalization: "ru",
     
     platforms: [
         .iOS(.v14),
@@ -35,8 +34,8 @@ let package = Package(
     ],
     
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", from: "1.0.1"),
-        .package(url: "https://github.com/The-Wand/Wand.git", from: "1.5.5")
+        .package(url: "https://github.com/The-Wand/Any.git", from: "1.0.3"),
+        .package(url: "https://github.com/The-Wand/Wand.git", from: "3.0.5")
     ],
     
     targets: [
@@ -44,9 +43,8 @@ let package = Package(
         .target(name: "WandMotion", dependencies: ["Wand"] ),
         .testTarget(name: "wandTests", dependencies:
                         [
-                            .product(name: "Any_", package: "Any"),
-                            "Wand",
                             "WandMotion",
+                            .product(name: "Any_", package: "Any"),
                         ]
                    )
         

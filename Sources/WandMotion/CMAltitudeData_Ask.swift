@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2569 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,8 +13,8 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
 #if canImport(CoreMotion)
 import CoreMotion.CMAltimeter
@@ -28,43 +28,46 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAltitudeData: AskingNil, Wanded {
-
+extension CMAltitudeData: Ask.Nil, Wanded {
+    
     @inline(__always)
     public
-    static 
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    static
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+        
+        let wand = Core.to(scope)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
-
+        
         //Request for a first time
-
+        
         //Prepare context
-        let source: CMAltimeter = wand.obtain()
+        let source: CMAltimeter = wand.get()
         
         //TODO: Test isRelativeAltitudeAvailable
         guard CMAltimeter.isRelativeAltitudeAvailable() else {
-            return
+            return wand
         }
-
+        
         let q: OperationQueue = wand.get() ?? .init()
-
+        
         //Set cleaner
         wand.setCleaner(for: ask) {
             source.stopRelativeAltitudeUpdates()
         }
-
+        
         //Request data
         source.startRelativeAltitudeUpdates(to: q) { (data, error) in
             wand.addIf(exist: data)
             wand.addIf(exist: error)
         }
-
+        
+        return wand
     }
-
+    
 }
 
 #endif
