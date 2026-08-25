@@ -28,25 +28,26 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMAttitude: AskingNil, Wanded {
-
+extension CMAttitude: Ask.Nil, Wanded {
+    
     @inline(__always)
     public
-    static 
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    static
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+        
+        let wand = Core.to(scope)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Request for a first time
 
         //Make request
-        wand | ask.option { (motion: CMDeviceMotion) in
+        return wand | ask.depend { (motion: CMDeviceMotion) in
             wand.add(motion.attitude)
         }
-
     }
 
 }

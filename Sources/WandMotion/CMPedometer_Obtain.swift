@@ -25,12 +25,12 @@ import Wand
 /// let pedometer: CMPedometer = nil|
 ///
 @available(visionOS, unavailable)
-extension CMPedometer: Obtain {
+extension CMPedometer: Obtainable {
 
     @inline(__always)
     public 
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
         Self()
     }
      

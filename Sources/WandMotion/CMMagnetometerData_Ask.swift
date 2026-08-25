@@ -28,22 +28,24 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMMagnetometerData: AskingNil, Wanded {
-
+extension CMMagnetometerData: Ask.Nil, Wanded {
+    
     @inline(__always)
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
-        // Save ask
-        guard wand.answer(the: ask) else {
-            return
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+        
+        let wand = Core.to(scope)
+        
+        //Save ask
+        guard wand.append(ask: ask) else {
+            return wand
         }
         
         //Request for a first time
 
         // Prepare context
-        let source: CMMotionManager =       wand.obtain()
+        let source: CMMotionManager =       wand.get()
         source.magnetometerUpdateInterval = wand.get() ?? 0.1
 
         let q: OperationQueue =             wand.get() ?? .init()
@@ -59,6 +61,7 @@ extension CMMagnetometerData: AskingNil, Wanded {
             wand.addIf(exist: error)
         }
 
+        return wand
     }
 }
 

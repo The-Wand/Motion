@@ -17,7 +17,9 @@
 /// El Machine 🤖
 
 #if canImport(CoreMotion)
+@_exported
 import CoreMotion.CMPedometer
+@_exported
 import Wand
 
 /// Ask
@@ -27,22 +29,24 @@ import Wand
 /// }
 ///
 @available(visionOS, unavailable)
-extension CMPedometerData: AskingNil, Wanded {
+extension CMPedometerData: Ask.Nil, Wanded {
 
     @inline(__always)
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+        
+        let wand = Core.to(scope)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Request for a first time
 
         //Prepare context
-        let source: CMPedometer = wand.obtain()
+        let source: CMPedometer = wand.get()
         let date: Date          = wand.get() ?? Date()
 
         //Set cleaner
@@ -55,7 +59,8 @@ extension CMPedometerData: AskingNil, Wanded {
             wand.addIf(exist: data)
             wand.addIf(exist: error)
         }
-
+        
+        return wand
     }
 
 }

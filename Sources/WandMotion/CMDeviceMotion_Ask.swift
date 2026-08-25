@@ -28,22 +28,24 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMDeviceMotion: AskingNil, Wanded {
+extension CMDeviceMotion: Ask.Nil, Wanded {
 
     @inline(__always) 
     public 
     static 
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+        
+        let wand = Core.to(scope)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Request for a first time
 
         //Prepare context
-        let source: CMMotionManager             = wand.obtain()
+        let source: CMMotionManager             = wand.get()
         source.deviceMotionUpdateInterval       = wand.get() ?? 0.1
 
         let frame: CMAttitudeReferenceFrame?    = wand.get()
@@ -65,7 +67,8 @@ extension CMDeviceMotion: AskingNil, Wanded {
         } else {
             source.startDeviceMotionUpdates(to: q, withHandler: handler)
         }
-
+        
+        return wand
     }
 
 }

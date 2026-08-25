@@ -26,12 +26,12 @@ import Wand
 ///
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMMotionManager: Obtain {
+extension CMMotionManager: Obtainable {
 
     @inline(__always)
     public 
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
         Self()
     }
      

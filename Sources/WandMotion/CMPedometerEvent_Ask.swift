@@ -29,22 +29,24 @@ import Wand
 @available(iOS 10.0, watchOS 3.0, *)
 @available(macOS, unavailable)
 @available(visionOS, unavailable)
-extension CMPedometerEvent: AskingNil, Wanded {
+extension CMPedometerEvent: Ask.Nil, Wanded {
 
     @inline(__always)
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
+        
+        let wand = Core.to(scope)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Request for a first time
 
         //Prepare context
-        let source: CMPedometer = wand.obtain()
+        let source: CMPedometer = wand.get()
 
         //Set cleaner
         wand.setCleaner(for: ask) {
@@ -57,6 +59,7 @@ extension CMPedometerEvent: AskingNil, Wanded {
             wand.addIf(exist: error)
         }
         
+        return wand
     }
 
 }
