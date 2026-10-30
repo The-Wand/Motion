@@ -38,7 +38,7 @@ extension CMMagnetometerData: Ask.Nil, Wanded {
         let wand = Core.to(scope)
         
         //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
         
@@ -51,14 +51,14 @@ extension CMMagnetometerData: Ask.Nil, Wanded {
         let q: OperationQueue =             wand.get() ?? .init()
 
         // Set cleaner
-        wand.setCleaner(for: ask) {
+        ask & {
             source.stopMagnetometerUpdates()
         }
 
         // Request
         source.startMagnetometerUpdates(to: q) { (data, error) in
-            wand.addIf(exist: data)
-            wand.addIf(exist: error)
+            wand +? data
+            wand +? error
         }
 
         return wand

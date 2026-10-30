@@ -38,7 +38,7 @@ extension CMDeviceMotion: Ask.Nil, Wanded {
         let wand = Core.to(scope)
         
         //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
 
@@ -52,12 +52,12 @@ extension CMDeviceMotion: Ask.Nil, Wanded {
         let q: OperationQueue                   = wand.get() ?? .init()
 
         let handler: CMDeviceMotionHandler = { motion, error in
-            wand.addIf(exist: motion)
-            wand.addIf(exist: error)
+            wand +? motion
+            wand +? error
         }
 
         //Set cleaner
-        wand.setCleaner(for: ask) {
+        ask & {
             source.stopDeviceMotionUpdates()
         }
 

@@ -38,7 +38,7 @@ extension CMAttitude: Ask.Nil, Wanded {
         let wand = Core.to(scope)
         
         //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
 
@@ -46,7 +46,7 @@ extension CMAttitude: Ask.Nil, Wanded {
 
         //Make request
         return wand | ask.depend { (motion: CMDeviceMotion) in
-            wand.add(motion.attitude)
+            wand + motion.attitude
         }
     }
 

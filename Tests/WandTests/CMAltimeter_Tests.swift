@@ -20,7 +20,7 @@
 import CoreMotion
 import XCTest
 
-import Wand_CoreMotion
+import WandMotion
 import Wand
 
 class CMAltimeter_Tests: XCTestCase {
@@ -47,7 +47,7 @@ class CMAltimeter_Tests: XCTestCase {
 //    }
 
     func test_CMAltimeter() {
-        XCTAssertNotNil(CMAltimeter.self|)
+        XCTAssertNotNil(CMAltimeter.self| as CMAltimeter)
     }
 
 }

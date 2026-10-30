@@ -48,23 +48,23 @@ extension XCTestCase {
 /// Ask.TNil
 extension XCTestCase {
 
-    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
-        auto_test(|, completion: completion)
-    }
-
-    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Wand) ,
-                                 completion:  @escaping (T)->() ) {
-
-        let e = expectation()
-        e.assertForOverFulfill = true
-
-        _ = api({ (t: T) in
-            e.fulfill()
-            completion(t)
-        })
-
-        waitForExpectations(timeout: .default)
-    }
+//    func auto_test<T: Ask.Nil>(completion:  @escaping (T)->() ) {
+//        auto_test(|, completion: completion)
+//    }
+//
+//    func auto_test<T: Ask.Nil>(_ api:   ( @escaping (T)->() )->(Core) ,
+//                                 completion:  @escaping (T)->() ) {
+//
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//
+//        _ = api({ (t: T) in
+//            e.fulfill()
+//            completion(t)
+//        })
+//
+//        waitForExpectations(timeout: .default)
+//    }
 
 }
 

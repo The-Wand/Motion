@@ -20,7 +20,7 @@
 import CoreMotion
 import XCTest
 
-import Wand_CoreMotion
+import WandMotion
 import Wand
 
 class CMMotionManager_Tests: XCTestCase {
@@ -66,7 +66,7 @@ class CMMotionManager_Tests: XCTestCase {
     }
 
     func test_CMMotionManager() {
-        XCTAssertNotNil(CMMotionManager.self|)
+        XCTAssertNotNil(CMMotionManager.self| as CMMotionManager)
     }
 
 }

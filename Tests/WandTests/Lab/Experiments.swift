@@ -10,14 +10,14 @@ import Foundation
 import Testing
 import WandMotion
 
-@Test
-func experiment() {
-    
-    |.every { (direction: Selector.Direction) in
-        print(direction)
-    }
-    
-}
+//@Test
+//func experiment() {
+//    
+//    |.every { (direction: Selector.Direction) in
+//        print(direction)
+//    }
+//    
+//}
 
 struct Selector {
 
@@ -35,7 +35,7 @@ struct Selector {
             let wand = Core.to(scope)
             
             //Save ask
-            guard wand.append(ask: ask) else {
+            guard wand + ask else {
                 return wand
             }
             
@@ -47,7 +47,7 @@ struct Selector {
                 let yaw = attitude.yaw
                 if (wand.get() ?? 0) - yaw > 1 {
                     let d = Direction(value: yaw)
-                    wand.add(d)
+                    wand + d
                 }
             }
         }

@@ -39,7 +39,7 @@ extension CMPedometerEvent: Ask.Nil, Wanded {
         let wand = Core.to(scope)
         
         //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
 
@@ -49,14 +49,14 @@ extension CMPedometerEvent: Ask.Nil, Wanded {
         let source: CMPedometer = wand.get()
 
         //Set cleaner
-        wand.setCleaner(for: ask) {
+        ask & {
             source.stopEventUpdates()
         }
 
         //Make request
         source.startEventUpdates { (update, error) in
-            wand.addIf(exist: update)
-            wand.addIf(exist: error)
+            wand +? update
+            wand +? error
         }
         
         return wand

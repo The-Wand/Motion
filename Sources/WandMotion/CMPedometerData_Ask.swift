@@ -39,7 +39,7 @@ extension CMPedometerData: Ask.Nil, Wanded {
         let wand = Core.to(scope)
         
         //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand + ask else {
             return wand
         }
 
@@ -50,14 +50,14 @@ extension CMPedometerData: Ask.Nil, Wanded {
         let date: Date          = wand.get() ?? Date()
 
         //Set cleaner
-        wand.setCleaner(for: ask) {
+        ask & {
             source.stopUpdates()
         }
 
         //Make request
         source.startUpdates(from: date) { (data, error) in
-            wand.addIf(exist: data)
-            wand.addIf(exist: error)
+            wand +? data
+            wand +? error
         }
         
         return wand
